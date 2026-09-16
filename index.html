@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JobRecruit | Find Your Next Career Opportunity</title>
+
+  <meta name="description"
+        content="Connect with recruitment support and discover career opportunities that match your skills and experience.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4fbff;
+      color: #102a43;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,140,190,0.12);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #087ea4;
+    }
+
+    .logo span {
+      color: #ff7a00;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: #31566b;
+    }
+
+    .nav-links a:hover {
+      color: #ff7a00;
+    }
+
+    .nav-button {
+      background: #ff7a00;
+      color: white !important;
+      padding: 11px 20px;
+      border-radius: 30px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 6% 80px;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255,153,65,.30), transparent 25%),
+        radial-gradient(circle at 10% 80%, rgba(70,190,230,.25), transparent 30%),
+        linear-gradient(135deg, #f8fdff, #e5f7ff);
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(255,122,0,.10);
+      color: #e66b00;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+      color: #092f49;
+    }
+
+    .hero h1 span {
+      color: #ff7a00;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 19px;
+      color: #557181;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn {
+      display: inline-block;
+      background: #ff7a00;
+      color: white;
+      padding: 15px 27px;
+      border-radius: 35px;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(255,122,0,.25);
+      transition: .3s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      background: #e96d00;
+    }
+
+    .secondary-btn {
+      display: inline-block;
+      background: white;
+      color: #087ea4;
+      padding: 15px 27px;
+      border-radius: 35px;
+      font-weight: 700;
+      border: 1px solid #cdebf5;
+    }
+
+    /* HERO CARD */
+
+    .hero-card {
+      position: relative;
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(20px);
+      padding: 35px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: 0 25px 70px rgba(23,104,135,.15);
+    }
+
+    .profile-icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ff7a00;
+      color: white;
+      font-size: 35px;
+      margin-bottom: 25px;
+    }
+
+    .hero-card h3 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .mini-box {
+      margin-top: 20px;
+      padding: 16px;
+      background: #f1fbff;
+      border-radius: 16px;
+      border-left: 4px solid #ff7a00;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 90px 6%;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      color: #092f49;
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      color: #637d8b;
+    }
+
+    /* FEATURES */
+
+    .features {
+      background: white;
+    }
+
+    .feature-grid {
+      max-width: 1150px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .feature-card {
+      padding: 32px;
+      border-radius: 22px;
+      background: #f8fdff;
+      border: 1px solid #dff2f8;
+      transition: .3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(16,90,120,.10);
+    }
+
+    .feature-number {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      background: #ff7a00;
+      color: white;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      color: #123f57;
+    }
+
+    .feature-card p {
+      color: #6c8490;
+    }
+
+    /* APPLICATION */
+
+    .application {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255,130,20,.16), transparent 30%),
+        linear-gradient(135deg,#eafaff,#f7fdff);
+    }
+
+    .application-container {
+      max-width: 950px;
+      margin: auto;
+      background: white;
+      padding: 45px;
+      border-radius: 30px;
+      box-shadow: 0 25px 70px rgba(12,90,120,.12);
+    }
+
+    .application-container h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .application-container > p {
+      text-align: center;
+      color: #718692;
+      margin-bottom: 35px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 5px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #264c60;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #cfe5ec;
+      border-radius: 12px;
+      background: #fbfeff;
+      font-size: 15px;
+      outline: none;
+      transition: .2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #ff7a00;
+      box-shadow: 0 0 0 3px rgba(255,122,0,.10);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    input[type="file"] {
+      background: white;
+      padding: 12px;
+    }
+
+    .submit-button {
+      grid-column: 1 / -1;
+      border: none;
+      cursor: pointer;
+      background: #ff7a00;
+      color: white;
+      padding: 17px;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: 800;
+      margin-top: 10px;
+    }
+
+    .submit-button:hover {
+      background: #e86e00;
+    }
+
+    .privacy-note {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 13px;
+      color: #7b909b;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #092f49;
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      color: #b9d4df;
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-btn {
+      background: #ff7a00;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    .email-btn {
+      background: white;
+      color: #092f49;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #062235;
+      color: #91b2c0;
+      padding: 25px 6%;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media(max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full,
+      .submit-button,
+      .privacy-note {
+        grid-column: auto;
+      }
+
+      .application-container {
+        padding: 25px;
+      }
+
+      .section-header h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+  <div class="logo">
+    Job<span>Recruit</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#apply">Apply</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a class="nav-button" href="#apply">Find a Job</a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+  <div class="hero-container">
+
+    <div>
+
+      <div class="badge">
+        Career & Recruitment Support
+      </div>
+
+      <h1>
+        Your next career opportunity
+        <span>starts here.</span>
+      </h1>
+
+      <p>
+        Tell us about your experience, skills and career goals.
+        Submit your details and CV so we can understand what
+        kind of opportunity you are looking for.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a class="primary-btn" href="#apply">
+          Find Your Next Job →
+        </a>
+
+        <a class="secondary-btn" href="#how">
+          How It Works
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <div class="profile-icon">
+        ✓
+      </div>
+
+      <h3>
+        Career Profile
+      </h3>
+
+      <p>
+        Create your professional job-seeker profile
+        and tell us what type of opportunity you are
+        looking for.
+      </p>
+
+      <div class="mini-box">
+        <strong>✓ Skills & Experience</strong>
+        <br>
+        Help us understand your professional background.
+      </div>
+
+      <div class="mini-box">
+        <strong>✓ CV Submission</strong>
+        <br>
+        Upload your latest CV for review.
+      </div>
+
+      <div class="mini-box">
+        <strong>✓ Recruitment Support</strong>
+        <br>
+        Contact our recruitment team through WhatsApp.
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="features" id="how">
+
+  <div class="section-header">
+
+    <h2>How It Works</h2>
+
+    <p>
+      A simple process for job seekers to introduce
+      themselves and their career goals.
+    </p>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+    <div class="feature-card">
+
+      <div class="feature-number">01</div>
+
+      <h3>Complete Your Profile</h3>
+
+      <p>
+        Tell us your name, location, skills,
+        experience and the type of job you are seeking.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">02</div>
+
+      <h3>Submit Your CV</h3>
+
+      <p>
+        Provide your CV or resume and additional
+        information that can help with your job search.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">03</div>
+
+      <h3>Contact Recruitment</h3>
+
+      <p>
+        After submitting your information,
+        contact our recruitment team directly through WhatsApp.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- APPLICATION -->
+
+<section class="application" id="apply">
+
+  <div class="application-container">
+
+    <h2>Start Your Job Search</h2>
+
+    <p>
+      Complete the form below with accurate information.
+    </p>
+
+
+    <!--
+      IMPORTANT:
+      Replace YOUR_FORMSPREE_ENDPOINT below with
+      your actual Formspree form endpoint.
+    -->
+
+    <form
+      action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+
+      <div class="form-grid">
+
+        <div class="form-group">
+
+          <label for="name">
+            Full Name *
+          </label>
+
+          <input
+            id="name"
+            name="Full Name"
+            type="text"
+            placeholder="Enter your full name"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="email">
+            Email Address *
+          </label>
+
+          <input
+            id="email"
+            name="Email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="phone">
+            Phone / WhatsApp *
+          </label>
+
+          <input
+            id="phone"
+            name="Phone / WhatsApp"
+            type="tel"
+            placeholder="+234..."
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="location">
+            Current Location *
+          </label>
+
+          <input
+            id="location"
+            name="Location"
+            type="text"
+            placeholder="City, Country"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="job">
+            Job You Are Looking For *
+          </label>
+
+          <input
+            id="job"
+            name="Job Desired"
+            type="text"
+            placeholder="e.g. Accountant, Designer, Developer"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="experience">
+            Years of Experience
+          </label>
+
+          <select id="experience" name="Experience">
+
+            <option value="">
+              Select experience
+            </option>
+
+            <option>Less than 1 year</option>
+            <option>1 - 2 years</option>
+            <option>3 - 5 years</option>
+            <option>6 - 10 years</option>
+            <option>10+ years</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label for="skills">
+            Skills
+          </label>
+
+          <input
+            id="skills"
+            name="Skills"
+            type="text"
+            placeholder="e.g. Excel, Graphic Design, Marketing, Sales"
+          >
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label for="education">
+            Education / Qualification
+          </label>
+
+          <input
+            id="education"
+            name="Education"
+            type="text"
+            placeholder="Enter your highest qualification"
+          >
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label for="cv">
+            Upload CV / Resume
+          </label>
+
+          <input
+            id="cv"
+            name="CV"
+            type="file"
+            accept=".pdf,.doc,.docx"
+          >
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label for="message">
+            Tell Us About Yourself
+          </label>
+
+          <textarea
+            id="message"
+            name="Additional Message"
+            placeholder="Briefly describe your career goals, experience and the type of opportunity you are looking for..."
+          ></textarea>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          Submit My Job Profile →
+        </button>
+
+
+        <div class="privacy-note">
+
+          By submitting this form, you confirm that the
+          information provided is accurate and may be used
+          for recruitment-related communication.
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <h2>Ready to Take the Next Step?</h2>
+
+  <p>
+    After submitting your job profile, contact our recruitment
+    team directly on WhatsApp so we can communicate with you.
+  </p>
+
+  <div class="contact-buttons">
+
+    <a
+      class="whatsapp-btn"
+      href="https://wa.me/2349067482591"
+      target="_blank"
+    >
+      💬 WhatsApp: 09067482591
+    </a>
+
+
+    <a
+      class="email-btn"
+      href="mailto:jobrecruitcprw@gmail.com"
+    >
+      ✉ jobrecruitcprw@gmail.com
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <p>
+    © 2026 <strong>JobRecruit</strong>.
+    Career & Recruitment Support.
+  </p>
+
+  <p>
+    Professional recruitment support for job seekers.
+  </p>
+
+</footer>
+
+</body>
+    </html>
